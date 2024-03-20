@@ -5,10 +5,30 @@ const ElevatedCard = () => {
     return (
         <View >
             <Text style={styles.headingText}>ElevatedCard</Text>
-            <ScrollView contentContainerStyle={styles.container}>
+            <ScrollView horizontal={true} contentContainerStyle={styles.container}>
                 <View style={[styles.card, styles.elevatedCard]}>
                     <Text style={styles.elevatedCardText}>
-                        Lorem ipsum dolor sit amet,
+                        Tap
+                    </Text>
+                </View>
+                <View style={[styles.card, styles.elevatedCard]}>
+                    <Text style={styles.elevatedCardText}>
+                        me
+                    </Text>
+                </View>
+                <View style={[styles.card, styles.elevatedCard]}>
+                    <Text style={styles.elevatedCardText}>
+                        to
+                    </Text>
+                </View>
+                <View style={[styles.card, styles.elevatedCard]}>
+                    <Text style={styles.elevatedCardText}>
+                        change
+                    </Text>
+                </View>
+                <View style={[styles.card, styles.elevatedCard]}>
+                    <Text style={styles.elevatedCardText}>
+                        More...
                     </Text>
                 </View>
             </ScrollView>
@@ -33,7 +53,20 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 10
     },
-    card: {},
-    elevatedCard: {},
-    elevatedCardText: {},
+    card: {
+        borderRadius: 8,
+        margin: 8,
+        flex: 1,
+        width: 100,
+        height: 100,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    elevatedCard: {
+        backgroundColor: '#313489',
+
+    },
+    elevatedCardText: {
+        color: 'white',
+    },
 })
