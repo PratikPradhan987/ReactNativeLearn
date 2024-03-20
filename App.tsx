@@ -28,6 +28,8 @@ import {
 import Profile from './components/profile';
 import ElevatedCard from './components/ElevatedCard';
 import FlatCard from './components/FlatCard';
+import FancyCard from './components/FancyCard';
+import Footer from './components/Footer';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -76,8 +78,10 @@ function App(): React.JSX.Element {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Profile />
+        <FancyCard />
         <FlatCard />
         <ElevatedCard />
+        <Footer />
       </ScrollView>
     </SafeAreaView>
   );

@@ -28,7 +28,7 @@ const ElevatedCard = () => {
                 </View>
                 <View style={[styles.card, styles.elevatedCard]}>
                     <Text style={styles.elevatedCardText}>
-                        More...
+                        More....
                     </Text>
                 </View>
             </ScrollView>
@@ -64,7 +64,15 @@ const styles = StyleSheet.create({
     },
     elevatedCard: {
         backgroundColor: '#313489',
-
+        elevation: 8,
+        shadowOffset: {
+            width: 1,
+            height: 1,
+        },
+        shadowColor: '#333',
+        shadowOpacity: 0.8,
+        shadowRadius: 1,
+        overflow: 'hidden'
     },
     elevatedCardText: {
         color: 'white',
