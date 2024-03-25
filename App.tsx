@@ -8,6 +8,7 @@
 import React from 'react';
 import type { PropsWithChildren } from 'react';
 import {
+  Button,
   Image,
   SafeAreaView,
   ScrollView,
@@ -30,6 +31,8 @@ import ElevatedCard from './components/ElevatedCard';
 import FlatCard from './components/FlatCard';
 import FancyCard from './components/FancyCard';
 import Footer from './components/Footer';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -60,23 +63,22 @@ function Section({ children, title }: SectionProps): React.JSX.Element {
     </View>
   );
 }
-
-function App(): React.JSX.Element {
+const HomeScreen = ({ navigation }) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
-
   return (
     <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
+        <Text className="text-2xl bg-green-600 text-center"> hello user </Text>
+        <Button
+          title="Go to Login"
+          onPress={() => navigation.navigate('Login')}
+        />
         <Profile />
         <FancyCard />
         <FlatCard />
@@ -84,8 +86,33 @@ function App(): React.JSX.Element {
         <Footer />
       </ScrollView>
     </SafeAreaView>
+  )
+}
+function Login(props) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Login</Text>
+      <Button
+        title="Go to Home"
+        onPress={() => props.navigation.navigate('Home')}
+      />
+    </View>
   );
 }
+const Stack = createNativeStackNavigator();
+function App(): React.JSX.Element {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={Login} options={{ title: 'Overview' }} />
+        <Stack.Screen name="Home">
+          {(props) => <HomeScreen {...props} />}
+        </Stack.Screen>
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
 
 const styles = StyleSheet.create({
   sectionContainer: {
